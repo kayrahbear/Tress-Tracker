@@ -1,0 +1,16 @@
+html {
+  font-family: 'Open Sans', sans-serif; }
+
+.mainHead,
+.welcomeHead,
+.registerHead {
+  font-family: 'Permanent Marker', 'cursive'; }
+
+.nameAndBrand {
+  font-weight: bold; }
+
+.card-image img {
+  height: 22em;
+  width: auto; }
+
+/*# sourceMappingURL=main.css.map */

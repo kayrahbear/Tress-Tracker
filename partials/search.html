@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col s6 m4 allWigs" ng-repeat="wig in allWigs | limitTo:24">
+        <div class="card hoverable">
+            <div class="card-image">
+                <img ng-src="{{wig.imageUrl}}">
+                <a class="btn-floating btn-large halfway-fab waves-effect waves-light purple"><md-tooltip>The average web price of this item</md-tooltip>{{wig.averageWebPrice | currency: "$" : 0}}</a>
+            </div>
+            <div class="card-content">
+                <p>{{wig.wigName}}</p>
+                <p>{{wig.wigBrand}}</p>
+            </div>
+        </div>
+    </div>
+</div>
