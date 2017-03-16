@@ -7,14 +7,24 @@
         <link rel="stylesheet" type="text/css" href="lib/node_modules/angular-material/angular-material.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Permanent+Marker" rel="stylesheet">
+        <link rel="stylesheet" href="lib/bower_components/sweetalert/dist/sweetalert.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
     </head>
     <body ng-app="TressTracker">
-
-    <div ng-include="'partials/navbar.html'"></div>
+    <header>
+        <div ng-include="'partials/navbar.html'"></div>
+    </header>
 
     <div class="main" ng-view>
     </div>
+
+    <footer class="page-footer blue-grey">
+        <div class="footer-copyright blue-grey darken-2">
+            <div class="container">
+                © 2017 Tress Tracker
+            </div>
+        </div>
+    </footer>
 
 
 
@@ -28,6 +38,8 @@
     <script type="text/javascript" src="lib/node_modules/angular-material/angular-material.min.js"></script>
     <script type="text/javascript" src="lib/node_modules/firebase/firebase.js"></script>
     <script type="text/javascript" src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <script type="text/javascript" src="lib/bower_components/ngSweetAlert/SweetAlert.min.js"></script>
+    <script type="text/javascript" src="lib/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 
 
     <!-- APP.JS -->
@@ -40,7 +52,7 @@
 
     <!-- NG CONTROLLERS -->
     <script type="text/javascript" src="app/Controllers/UserCtrl.js"></script>
-    <script type="text/javascript" src="app/Controllers/HomeCtrl.js"></script>
+    <script type="text/javascript" src="app/Controllers/SearchCtrl.js"></script>
     <script type="text/javascript" src="app/Controllers/NavBarCtrl.js"></script>
 
     </body>
