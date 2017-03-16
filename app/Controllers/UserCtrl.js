@@ -39,6 +39,7 @@ app.controller('UserCtrl', function ($scope, $window, AuthFactory) {
 	      $scope.login();
 	    }, (error) => {
 	        console.log("Error creating user: ", error);
+
 	    });
   	};
 
@@ -48,7 +49,7 @@ app.controller('UserCtrl', function ($scope, $window, AuthFactory) {
 	    .then( () => {
 	    	console.log("UserCtrl: user is loggedIn", $scope.isLoggedIn );
 	        $scope.isLoggedIn = true;
-	        $window.location.href = "#!/jinterest/jinList";
+	        $window.location.href = "#!/search";
 	    });
 	};
 
@@ -58,7 +59,7 @@ app.controller('UserCtrl', function ($scope, $window, AuthFactory) {
 	    	console.log("logged in user: ", result.user.uid);
 	    	//Once logged in, go to another view
 	    	$scope.isLoggedIn = true;
-	    	$window.location.href = "#!/jinterest/jinList";
+	    	$window.location.href = "#!/search";
 	  	}).catch(function(error) {
 	    	console.log("error with google login", error);
 	  	});

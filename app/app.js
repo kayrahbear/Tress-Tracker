@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module("TressTracker", ["ngRoute", "ngMaterial"]);
+var app = angular.module("TressTracker", ["ngRoute", "ngMaterial", "oitozero.ngSweetAlert"]);
 
 //used to authenticate user when navigating to other views
 let isAuth = (AuthFactory) => new Promise ( (resolve, reject) => {
@@ -40,6 +40,10 @@ app.config( function($routeProvider) {
         templateUrl: 'partials/search.html',
         controller: "SearchCtrl"
     }).
+    when('/search/:wigId', {
+        templateUrl: 'partials/singlewig.html',
+        controller: 'SingleWigCtrl'
+    }).
     when('/profile', {
         templateUrl: 'partials/profile.html',
         controller: "ProfileCtrl"
@@ -61,3 +65,14 @@ firebase.initializeApp(authConfig);
 
 
 //Materialize Functions
+$('.dropdown-button').dropdown({
+inDuration: 300,
+outDuration: 225,
+constrainWidth: false, // Does not change width of dropdown to that of the activator
+hover: false, // Activate on hover
+gutter: 0, // Spacing from edge
+belowOrigin: false, // Displays dropdown below the button
+alignment: 'left', // Displays dropdown with edge aligned to the left of button
+stopPropagation: false // Stops event propagation
+}
+);
