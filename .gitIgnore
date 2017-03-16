@@ -1,4 +1,5 @@
 /tressTrackerData
 lib/node_modules
+lib/bower_components
 lib/.sass-cache
 app/values
