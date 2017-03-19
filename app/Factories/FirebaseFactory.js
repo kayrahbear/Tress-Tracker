@@ -2,6 +2,8 @@
 
 app.factory("FirebaseStorage", function(FBCreds, $q, $http, AuthFactory) {
 
+    //wig interactions
+
     let getAllWigs = () => {
         let wigs = [];
         return $q((resolve, reject) => {
@@ -44,6 +46,8 @@ app.factory("FirebaseStorage", function(FBCreds, $q, $http, AuthFactory) {
         });
     };
 
+    //user specific interactions
+
     let addUserWig = (userWig) => {
     return $q((resolve, reject)=>{
         $http.post(`${FBCreds.databaseURL}/userData.json`,
@@ -57,6 +61,35 @@ app.factory("FirebaseStorage", function(FBCreds, $q, $http, AuthFactory) {
         });
     };
 
-    return {getAllWigs, getSingleWig, addUserWig};
+
+
+    let getUserWigs = (user) => {
+        let wigs = [];
+        return $q((resolve, reject) => {
+            $http.get(`${FBCreds.databaseURL}/userData.json?orderBy="uid"&equalTo="${user}"`)
+            .then((wigObject) =>{
+                let wigCollection = wigObject.data;
+                Object.keys(wigCollection).forEach((key)=>{
+                    wigCollection[key].id = key;
+                    wigs.push(wigCollection[key]);
+                });
+                resolve(wigs);
+            })
+            .catch((error)=> {
+                reject(error);
+            });
+        });
+    };
+
+    let deleteUserWig = (wigId) => {
+    return $q((resolve, reject) => {
+        $http.delete(`${FBCreds.databaseURL}/allWigs/${wigId}.json`)
+            .then((ObjectFromFirebase) => {
+                resolve(ObjectFromFirebase);
+            });
+        });
+    };
+
+    return {getAllWigs, getSingleWig, scrapeSingleWig, addUserWig, getUserWigs, deleteUserWig};
 
 });

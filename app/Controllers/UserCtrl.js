@@ -1,7 +1,7 @@
 'use strict';
 
 // login, logout, register, loginGoogle, conditional, authfactory
-app.controller('UserCtrl', function ($scope, $window, AuthFactory) {
+app.controller('UserCtrl', function ($scope, $window, AuthFactory, SweetAlert, FirebaseStorage) {
 
 
 	$scope.isLoggedIn = false;
@@ -9,7 +9,7 @@ app.controller('UserCtrl', function ($scope, $window, AuthFactory) {
 	$scope.account = {
 		email: '',
 		password: '',
-		displayName: ''
+		displayName: 'New User'
 	};
 
 	$scope.logout = () => {
@@ -20,6 +20,7 @@ app.controller('UserCtrl', function ($scope, $window, AuthFactory) {
 			$scope.isLoggedIn = false;
 		}, function(error){
 			console.log("error occured on logout");
+			SweetAlert.swal("Oops!", error.message, "error");
 		});
 	};
 
@@ -39,6 +40,7 @@ app.controller('UserCtrl', function ($scope, $window, AuthFactory) {
 	      $scope.login();
 	    }, (error) => {
 	        console.log("Error creating user: ", error);
+			SweetAlert.swal("Oops!", error.message, "error");
 
 	    });
   	};
@@ -50,18 +52,22 @@ app.controller('UserCtrl', function ($scope, $window, AuthFactory) {
 	    	console.log("UserCtrl: user is loggedIn", $scope.isLoggedIn );
 	        $scope.isLoggedIn = true;
 	        $window.location.href = "#!/search";
+		}, (error) => {
+			console.log("Error logging in: ", error);
+			SweetAlert.swal("Oops!", error.message, "error");
 	    });
 	};
 
 	$scope.loginGoogle = () => {
 		console.log("you clicked login with Google");
 		AuthFactory.authWithProvider().then(function(result) {
-	    	console.log("logged in user: ", result.user.uid);
+	    	console.log("logged in user: ", result.user);
 	    	//Once logged in, go to another view
 	    	$scope.isLoggedIn = true;
 	    	$window.location.href = "#!/search";
 	  	}).catch(function(error) {
 	    	console.log("error with google login", error);
+			SweetAlert.swal("Oops!", error.message, "error");
 	  	});
 	};
 

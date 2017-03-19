@@ -2,6 +2,16 @@
 
 var app = angular.module("TressTracker", ["ngRoute", "ngMaterial", "oitozero.ngSweetAlert"]);
 
+app.filter('startFrom', function() {
+    return function(input, start) {
+        if(input) {
+            start = +start;
+            return input.slice(start);
+        }
+        return [];
+    };
+});
+
 //used to authenticate user when navigating to other views
 let isAuth = (AuthFactory) => new Promise ( (resolve, reject) => {
     AuthFactory.isAuthenticated()
@@ -62,17 +72,3 @@ app.run(($location, FBCreds) => {
 
 firebase.initializeApp(authConfig);
 });
-
-
-//Materialize Functions
-$('.dropdown-button').dropdown({
-inDuration: 300,
-outDuration: 225,
-constrainWidth: false, // Does not change width of dropdown to that of the activator
-hover: false, // Activate on hover
-gutter: 0, // Spacing from edge
-belowOrigin: false, // Displays dropdown below the button
-alignment: 'left', // Displays dropdown with edge aligned to the left of button
-stopPropagation: false // Stops event propagation
-}
-);

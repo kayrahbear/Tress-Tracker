@@ -1,0 +1,94 @@
+<div class="container">
+    <div class="row">
+        <div class="col s12" ng-show="user.currentUserDisplayName == 'New User'">
+            <h4>Welcome!</h4>
+            <p>Would you like to take a moment and complete your <a>profile</a>?</p>
+        </div>
+        <div class="col s12" ng-show="user.currentUserDisplayName != 'New User'">
+            <h4>Hi <span class="pink-text"> {{user.currentUserDisplayName}}</span>!</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <i class="pink-text material-icons prefix">search</i>
+            <input type="text" ng-model="q" id="search" placeholder="Search your Tress Tracker wigs">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <a class="btn waves-effect waves-light modal-close" name="action">View Owned
+            <i class="material-icons left">favorite</i>
+            </a>
+            <a class="btn waves-effect waves-light modal-close" name="action">View Wishlist
+            <i class="material-icons left">star</i>
+            </a>
+            <a class="btn waves-effect waves-light modal-close" name="action">View Tried
+            <i class="material-icons left">face</i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col s6 m4 userWigs" ng-repeat="wig in allUserWigs | filter:q | startFrom:currentPage*pageSize | limitTo:pageSize">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" ng-src="{{wig.imageUrl}}">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">{{wig.wigName}}<i class="pink-text material-icons right">more_vert</i></span>
+                    <p class="grey-text text-darken-1">{{wig.wigBrand}}</p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">{{wig.wigName}}<i class="pink-text material-icons right">close</i></span>
+                    <p class="grey-text text-darken-1" ng-show="wig.owned"><i class="pink-text material-icons left">favorite</i>Owned Item</p>
+                    <p class="grey-text text-darken-1" ng-show="wig.wishlist"><i class="pink-text material-icons left">star</i>Wishlist Item</p>
+                    <p class="grey-text text-darken-1" ng-show="wig.triedLiked"><i class="pink-text material-icons left">sentiment_very_satisfied</i>Tried and Liked Item</p>
+                    <p class="grey-text text-darken-1" ng-show="wig.triedDisliked"><i class="pink-text material-icons left">sentiment_very_dissatisfied</i>Tried and Disliked Item</p>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Hair Type:</td>
+                                <td>{{wig.hairType}}</td>
+                            </tr>
+                            <tr>
+                                <td>Wig Type:</td>
+                                <td>{{wig.wigType}}</td>
+                            </tr>
+                            <tr ng-show="wig.owned">
+                                <td>Purchase Price:</td>
+                                <td>{{wig.purchasePrice | currency: "$" : 0}}</td>
+                            </tr>
+                            <tr ng-show="wig.owned">
+                                <td>Purchase Date:</td>
+                                <td>{{wig.purchaseDate | date}}</td>
+                            </tr>
+                            <tr>
+                                <td>Average Web Price:</td>
+                                <td>{{wig.averageWebPrice | currency: "$" : 0}}</td>
+                            </tr>
+                            <tr>
+                                <td>Color:</td>
+                                <td>{{wig.color}}</td>
+                            </tr>
+                            <tr>
+                                <td>Cap Size:</td>
+                                <td>{{wig.capSize}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>{{wig.notes}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row center-align">
+        <button class="btn" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">Previous </button>
+
+        {{currentPage+1}}/{{numberOfPages()}}
+
+        <button class="btn" ng-disabled="currentPage >= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1">More Results
+        </button>
+    </div>
+</div>

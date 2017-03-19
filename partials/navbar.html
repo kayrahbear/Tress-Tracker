@@ -2,41 +2,23 @@
     <ul id="slide-out" class="side-nav">
         <li ng-show="isLoggedIn"><div class="userView">
             <a href="#!user"><img class="circle" ng-src="images/test.jpg"></a>
-            <a href="#!name"><span class="pink-text name">Kayla Brewer</span></a>
-            <a href="#!email"><span class="pink-text email">cooper.kaylam@gmail.com</span></a>
+            <a href="#!name"><span class="pink-text name">{{user.currentUserDisplayName}}</span></a>
+            <a href="#!email"><span class="grey-text text-darken-1 email">{{user.currentUserEmail}}</span></a>
         </div></li>
-        <li class="no-padding">
-            <ul class="collapsible collapsible-accordion">
-                <li>
-                    <a class="collapsible-header">My Tress Tracker<i class="material-icons">arrow_drop_down</i></a>
-                    <div class="collapsible-body">
-                        <ul>
-                            <li><a href="#!"><i class="material-icons">favorite</i>Owned Wigs</a></li>
-                            <li><a href="#!"><i class="material-icons">grade</i>Wishlist</a></li>
-                            <li><a href="#!"><i class="material-icons">face</i>Wigs I've Tried</a></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
         </li>
         <li><div class="divider"></div></li>
-        <li ng-show="isLoggedIn"><a class="waves-effect" href="#!"><i class="material-icons">search</i>Browse All Wigs</a></li>
-        <li ng-show="isLoggedIn"><a class="waves-effect" href="#!"><i class="material-icons">help</i>Resources</a></li>
+        <li ng-show="isLoggedIn"><a class="waves-effect" href="#!/profile"><i class="material-icons pink-text">face</i>My Tress Tracker</a></li>
+        <li ng-show="isLoggedIn"><a class="waves-effect" href="#!/search"><i class="material-icons pink-text">search</i>Browse All Wigs</a></li>
+        <li ng-show="isLoggedIn"><a class="waves-effect" href="#!"><i class="material-icons pink-text">help</i>Resources</a></li>
         <li ng-show="!isLoggedIn"><i class="material-icons pink-text">favorite</i><h3 class="grey-text text-darken-1">Please register or log in to get started.</h3></li>
     </ul>
     <a href="#!" class="brand-logo">Tress Tracker</a>
     <ul class="right hide-on-med-and-down">
-    <li ng-show="!isLoggedIn"><a href="#!">Log In</a></li>
-    <li ng-show="isLoggedIn"><a href="#!">Resources</a></li>
-    <li ng-show="isLoggedIn"><a href="#!/search">Browse Wigs</a></li>
-    <li ng-show="isLoggedIn"><a class="dropdown-button" data-activates="dropdown1">My Tress Tracker<i class="material-icons right">arrow_drop_down</i></a></li>
-    <ul id='dropdown1' class='dropdown-content'>
-        <li><a class="grey-text text-darken-1" href="#!"><i class="small material-icons left pink-text">account_circle</i>View My Profile</a></li>
-        <li><a class="grey-text text-darken-1"  href="#!"><i class="small material-icons left pink-text">favorite</i>Owned Wigs</a></li>
-        <li><a class="grey-text text-darken-1"  href="#!"><i class="small material-icons left pink-text">grade</i>Wishlist</a></li>
-        <li><a class="grey-text text-darken-1"  href="#!"><i class="small material-icons left pink-text">face</i>Wigs I've Tried</a></li>
-        <li><a class="grey-text text-darken-1"  href="#!"><i class="small material-icons left pink-text">home</i>Log Out</a></li>
+        <li ng-show="!isLoggedIn"><a href="#!">Log In</a></li>
+        <li ng-show="isLoggedIn"><a href="#!">Resources</a></li>
+        <li ng-show="isLoggedIn"><a href="#!/search">Browse Wigs</a></li>
+        <li ng-show="isLoggedIn"><a href="#!/profile">My Tress Tracker</a></li>
+        <li ng-show="isLoggedIn"><a href="#!">Log Out</a></li>
     </ul>
-  </ul>
     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 </nav>
