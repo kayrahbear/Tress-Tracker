@@ -2,9 +2,11 @@
 
 app.factory('AuthFactory', function() {
 
-	let currentUser = null;
-	let currentUserEmail = null;
-	let currentUserDisplayName = null;
+	let userData = {
+		currentUser : null,
+ 		currentUserEmail : null,
+		currentUserDisplayName : "New User"
+	};
 
 	let createUser = function(userObj) {
 		return firebase.auth().createUserWithEmailAndPassword(userObj.email, userObj.password);
@@ -23,9 +25,9 @@ app.factory('AuthFactory', function() {
 		return new Promise (function (resolve, reject) {
 			firebase.auth().onAuthStateChanged(function (user) {
 				if (user){
-					currentUser = user.uid;
-					currentUserEmail = user.email;
-					currentUserDisplayName = user.displayName;
+					userData.currentUser = user.uid;
+					userData.currentUserEmail = user.email;
+					userData.currentUserDisplayName = user.displayName;
 					resolve(true);
 				} else {
 					resolve(false);
@@ -35,17 +37,8 @@ app.factory('AuthFactory', function() {
 	};
 
 	let getUser = function() {
-		return currentUser;
+		return userData;
 	};
-
-	let getUserEmail = function () {
-		return currentUserEmail;
-	};
-
-	let getUserDisplayName = function () {
-		return currentUserDisplayName;
-	};
-
 
 	let provider = new firebase.auth.GoogleAuthProvider();
 
@@ -60,8 +53,6 @@ app.factory('AuthFactory', function() {
 		isAuthenticated,
 		getUser,
 		authWithProvider,
-		getUserEmail,
-		getUserDisplayName
 	};
 
 });

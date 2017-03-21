@@ -8,7 +8,17 @@ body {
    flex: 1 0 auto;
  }
 
-.btn-large, .btn {
+ .sweet-alert button {
+     background-color: #e91e63;
+ }
+
+ .sweet-alert button:hover {
+     background-color: #f06292;
+ }
+
+.btn-large,
+.btn,
+.btn-flat {
     background-color: #e91e63;
 }
 
@@ -38,4 +48,8 @@ input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]),
 
 .card-content{
     background-color: #CFD8DC;
+}
+
+.deleteButton {
+    background-color: #FAFAFA;
 }
