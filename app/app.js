@@ -12,6 +12,18 @@ app.filter('startFrom', function() {
     };
 });
 
+app.filter('owned', function() {
+  return function(allUserWigs) {
+    var out = [];
+    angular.forEach(allUserWigs, function(wig) {
+      if (wig.owned === true) {
+        out.push(wig);
+      }
+  });
+    return out;
+};
+});
+
 //used to authenticate user when navigating to other views
 let isAuth = (AuthFactory) => new Promise ( (resolve, reject) => {
     AuthFactory.isAuthenticated()

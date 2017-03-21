@@ -23,6 +23,7 @@
                     <span class="card-title grey-text text-darken-4">{{selectedWig.wigName}}</span>
                     <p>by {{selectedWig.wigBrand}}</p>
                     <p>{{selectedWig.hairType}} {{selectedWig.wigType}}</p>
+                    <p><a target="_blank" href="https://www.youtube.com/results?search_query={{selectedWig.wigName}}+by+{{selectedWig.wigBrand}}+reviews">Search Youtube for video reviews</a></p>
                 </div>
             </div>
         </div>
@@ -66,8 +67,10 @@
             </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="owned_color" type="text" class="validate" ng-model="userWigObj.color">
-                        <label for="owned_color">Color Owned</label>
+                        <select id="ownedcolors" ng-model="userWigObj.color">
+                            <option ng-repeat="colorName in scrapedColors" value="{{colorName.title}}">{{colorName.title}}</option>
+                        </select>
+                        <label for="ownedcolors">Color Owned</label>
                     </div>
                 </div>
                 <div class="row">
@@ -84,7 +87,7 @@
                 </div>
             </form>
         <div class="modal-footer">
-            <a class="btn-flat waves-effect waves-light modal-close" type="submit" name="action" ng-click="ownedToFB()">Submit
+            <a class="white-text btn-flat waves-effect waves-light modal-close" type="submit" name="action" ng-click="ownedToFB()">Submit
             <i class="material-icons right">favorite</i>
             </a>
         </div>
@@ -96,8 +99,10 @@
         <form>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="wish_color" type="text" class="validate" ng-model="userWigObj.color">
-                    <label for="wish_color">Ideal Color</label>
+                    <select id="wishcolors" ng-model="userWigObj.color">
+                        <option ng-repeat="colorName in scrapedColors" value="{{colorName.title}}">{{colorName.title}}</option>
+                    </select>
+                    <label for="wishcolors">Ideal Color </label>
                 </div>
             </div>
             <div class="row">
@@ -126,8 +131,10 @@
         <form>
             <div class="row">
                 <div class="input-field col s10">
-                    <input id="liked_color" type="text" class="validate" ng-model="userWigObj.color">
-                    <label for="liked_color">Color Tried</label>
+                    <select id="likecolors" ng-model="userWigObj.color">
+                        <option ng-repeat="colorName in scrapedColors" value="{{colorName.title}}">{{colorName.title}}</option>
+                    </select>
+                    <label for="likecolors">Color Tried </label>
                 </div>
                 <div class="input-field col s2">
                     <input type="checkbox" id="addToWish" ng-click="addWishlistWig()" />
@@ -160,8 +167,10 @@
         <form>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="disliked_color" type="text" class="validate" ng-model="userWigObj.color">
-                    <label for="disliked_color">Color Tried</label>
+                    <select ng-model="userWigObj.color">
+                        <option ng-repeat="colorName in scrapedColors" value="{{colorName.title}}">{{colorName.title}}</option>
+                    </select>
+                    <label>Color Tried</label>
                 </div>
             </div>
             <div class="row">

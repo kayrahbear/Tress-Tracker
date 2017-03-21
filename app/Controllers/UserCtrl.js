@@ -51,7 +51,7 @@ app.controller('UserCtrl', function ($scope, $window, AuthFactory, SweetAlert, F
 	    .then( () => {
 	    	console.log("UserCtrl: user is loggedIn", $scope.isLoggedIn );
 	        $scope.isLoggedIn = true;
-	        $window.location.href = "#!/search";
+	        $window.location.href = "#!/profile";
 		}, (error) => {
 			console.log("Error logging in: ", error);
 			SweetAlert.swal("Oops!", error.message, "error");
@@ -64,7 +64,7 @@ app.controller('UserCtrl', function ($scope, $window, AuthFactory, SweetAlert, F
 	    	console.log("logged in user: ", result.user);
 	    	//Once logged in, go to another view
 	    	$scope.isLoggedIn = true;
-	    	$window.location.href = "#!/search";
+	    	$window.location.href = "#!/profile";
 	  	}).catch(function(error) {
 	    	console.log("error with google login", error);
 			SweetAlert.swal("Oops!", error.message, "error");

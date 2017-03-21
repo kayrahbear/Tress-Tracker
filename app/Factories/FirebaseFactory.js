@@ -83,7 +83,7 @@ app.factory("FirebaseStorage", function(FBCreds, $q, $http, AuthFactory) {
 
     let deleteUserWig = (wigId) => {
     return $q((resolve, reject) => {
-        $http.delete(`${FBCreds.databaseURL}/allWigs/${wigId}.json`)
+        $http.delete(`${FBCreds.databaseURL}/userData/${wigId}.json`)
             .then((ObjectFromFirebase) => {
                 resolve(ObjectFromFirebase);
             });

@@ -23,6 +23,7 @@ app.controller('SingleWigCtrl', function($scope, $routeParams, SweetAlert, AuthF
 
 
     $scope.addOwnedWig = function () {
+        $('select').material_select();
         $scope.userWigObj.uid = $scope.user.currentUser;
         $scope.userWigObj.displayName = $scope.user.currentUserDisplayName;
         $scope.userWigObj.owned = true;
@@ -34,6 +35,7 @@ app.controller('SingleWigCtrl', function($scope, $routeParams, SweetAlert, AuthF
     };
 
     $scope.addWishlistWig = function () {
+        $('select').material_select();
         $scope.userWigObj.uid = $scope.user.currentUser;
         $scope.userWigObj.displayName = $scope.user.currentUserDisplayName;
         $scope.userWigObj.wishlist = true;
@@ -43,6 +45,7 @@ app.controller('SingleWigCtrl', function($scope, $routeParams, SweetAlert, AuthF
     };
 
     $scope.addTriedLiked = function () {
+        $('select').material_select();
         $scope.userWigObj.uid = $scope.user.currentUser;
         $scope.userWigObj.displayName = $scope.user.currentUserDisplayName;
         $scope.userWigObj.triedLiked = true;
@@ -53,6 +56,7 @@ app.controller('SingleWigCtrl', function($scope, $routeParams, SweetAlert, AuthF
     };
 
     $scope.addTriedDisliked = function () {
+        $('select').material_select();
         $scope.userWigObj.uid = $scope.user.currentUser;
         $scope.userWigObj.displayName = $scope.user.currentUserDisplayName;
         $scope.userWigObj.triedDisliked = true;
@@ -89,5 +93,7 @@ app.controller('SingleWigCtrl', function($scope, $routeParams, SweetAlert, AuthF
     $(document).ready(function(){
         $('.modal').modal();
     });
+
+
 
 });

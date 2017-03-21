@@ -3,11 +3,22 @@
 app.controller('SearchCtrl', function($scope, $filter, $routeParams, $location, AuthFactory, FirebaseStorage) {
 
     $scope.allWigs = [];
+    $scope.filteredWigs = '';
+    $scope.allBrands = ["Amore","Belle Madame", "BelleTress", "Easihair", "Ellen Wille", "Envy","Envy (Alan Eaton)", "Estetica", "Gabor", "HairDo", "Henry Margu", "Jon Renau", "Jon Renau Evolution", "Jon Renau Illusions", "Louis Ferre", "Naturally Yours(Henry Margu)", "Noriko", "Raquel Welch", "Rene of Paris Hi Fashion", "Revlon", "Sherri Shepherd", "Tony of Beverly", "TressAllure"
+    ];
+    $scope.wigTypes = ["Partial/Topper", "Full Wig"];
+    $scope.hairTypes = ["Synthetic", "Human Hair"];
 
     FirebaseStorage.getAllWigs().then(function(allWigs){
         console.log('Complete list of all wigs: ', allWigs);
         $scope.allWigs = allWigs;
     });
+
+
+      $(document).ready(function() {
+        $('select').material_select();
+      });
+
 
     $scope.currentPage = 0;
     $scope.pageSize = 12;
