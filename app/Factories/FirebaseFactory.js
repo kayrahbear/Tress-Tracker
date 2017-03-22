@@ -2,8 +2,7 @@
 
 app.factory("FirebaseStorage", function(FBCreds, $q, $http, AuthFactory) {
 
-    //wig interactions
-
+//interactions with non-user items from Firebase
     let getAllWigs = () => {
         let wigs = [];
         return $q((resolve, reject) => {
@@ -15,6 +14,24 @@ app.factory("FirebaseStorage", function(FBCreds, $q, $http, AuthFactory) {
                     wigs.push(wigCollection[key]);
                 });
                 resolve(wigs);
+            })
+            .catch((error)=> {
+                reject(error);
+            });
+        });
+    };
+
+    let getColors = () => {
+        let colors = [];
+        return $q((resolve, reject) => {
+            $http.get(`${FBCreds.databaseURL}/brandColors.json`)
+            .then((brandObject) =>{
+                let brandColorsCollection = brandObject.data;
+                Object.keys(brandColorsCollection).forEach((key)=>{
+                    brandColorsCollection[key].id = key;
+                    colors.push(brandColorsCollection[key]);
+                });
+                resolve(colors);
             })
             .catch((error)=> {
                 reject(error);
@@ -46,8 +63,7 @@ app.factory("FirebaseStorage", function(FBCreds, $q, $http, AuthFactory) {
         });
     };
 
-    //user specific interactions
-
+//user specific interactions with FB
     let addUserWig = (userWig) => {
     return $q((resolve, reject)=>{
         $http.post(`${FBCreds.databaseURL}/userData.json`,
@@ -60,8 +76,6 @@ app.factory("FirebaseStorage", function(FBCreds, $q, $http, AuthFactory) {
             });
         });
     };
-
-
 
     let getUserWigs = (user) => {
         let wigs = [];
@@ -90,6 +104,6 @@ app.factory("FirebaseStorage", function(FBCreds, $q, $http, AuthFactory) {
         });
     };
 
-    return {getAllWigs, getSingleWig, scrapeSingleWig, addUserWig, getUserWigs, deleteUserWig};
+    return {getAllWigs, getSingleWig, scrapeSingleWig, addUserWig, getUserWigs, deleteUserWig, getColors};
 
 });

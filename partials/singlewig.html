@@ -33,7 +33,9 @@
                     <span class="grey-text text-darken-4">Color Variants:</span><p ng-repeat="colorName in scrapedColors | startFrom : 1">{{colorName.title}}</p>
                 </div>
                 <div class="card-action">
-                    <a href="#">View all {{selectedWig.wigBrand}}'s colors</a>
+                    <a class="pink-text" href="#!">
+                        View all {{selectedWig.wigBrand}}'s colors
+                    </a>
                 </div>
             </div>
         </div>
@@ -156,7 +158,7 @@
         </form>
         <div class="modal-footer">
             <a class="btn waves-effect waves-light modal-close" type="submit" name="action" ng-click="likeToFB()">Submit
-                <i class="material-icons right">face</i>
+                <i class="material-icons right">sentiment_very_satisfied</i>
             </a>
         </div>
     </div>
@@ -188,7 +190,7 @@
         </form>
         <div class="modal-footer">
             <a class="btn waves-effect waves-light modal-close" type="submit" name="action" ng-click="dislikeToFB()">Submit
-                <i class="material-icons right">face</i>
+                <i class="material-icons right">sentiment_very_dissatisfied</i>
             </a>
         </div>
     </div>

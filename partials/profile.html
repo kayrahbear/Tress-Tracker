@@ -1,4 +1,6 @@
 <div class="container">
+
+    <!-- row that shows user name, or allows email/pass users to enter one. hides on small screens -->
     <div class="row hide-on-small-only">
         <div class="col s12" ng-show="user.currentUserDisplayName == null">
             <h4>Welcome!</h4>
@@ -9,6 +11,8 @@
             <p class="grey-text text-darken-1">Welcome to your Tress Tracker Page. You can view all the items you've saved to your account here.</p>
         </div>
     </div>
+
+    <!-- search bar for user objects -->
     <div class="row">
         <div class="input-field col s12">
             <i class="pink-text material-icons prefix">search</i>
@@ -17,6 +21,7 @@
     </div>
 </div>
 
+<!-- table of all user objects sorted into owned, wishlist, and tried. can click 'more info' for modal -->
 <div class="container">
     <div class="row">
         <div class="col s12 m12 l12 userWigs">
@@ -64,6 +69,7 @@
     </div>
 </div>
 
+<!-- 'more info' modal -->
 <div id="profileViewMore" class="modal">
     <div class="modal-content">
             <div class="row">
@@ -130,6 +136,7 @@
     </div>
 </div>
 
+<!-- enter displayName modal for email/pass users -->
 <div id="updateProfile" class="modal">
     <div class="modal-content">
         <div class="row">

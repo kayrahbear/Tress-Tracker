@@ -2,26 +2,27 @@
 
 app.controller('SingleWigCtrl', function($scope, $routeParams, SweetAlert, AuthFactory, FirebaseStorage, $window, $location, $anchorScroll) {
 
+//all scoped vars
     $scope.user = AuthFactory.getUser();
-
     $scope.userWigObj = {};
+    $scope.allColors = [];
 
+//Firebase Calls to get data for DOM
     FirebaseStorage.getSingleWig($routeParams.wigId)
         .then(function successCallback(response){
             $scope.userWigObj = response;
             $scope.selectedWig = response;
             console.log("selected", $scope.userWigObj.wigUrl);
             FirebaseStorage.scrapeSingleWig($scope.userWigObj.wigUrl)
-        .then(function successCallback(scrapeResponse){
-            $scope.scrapedWig = scrapeResponse;
-            $scope.scrapedColors = $scope.scrapedWig.product.variants;
-            console.log("scraped", $scope.scrapedWig);
-            console.log("colors", $scope.scrapedColors);
+            .then(function successCallback(scrapeResponse){
+                $scope.scrapedWig = scrapeResponse;
+                $scope.scrapedColors = $scope.scrapedWig.product.variants;
+                console.log("scraped", $scope.scrapedWig);
+                console.log("colors", $scope.scrapedColors);
             });
         });
 
-
-
+//create new wigobjects from user input
     $scope.addOwnedWig = function () {
         $('select').material_select();
         $scope.userWigObj.uid = $scope.user.currentUser;
@@ -52,7 +53,6 @@ app.controller('SingleWigCtrl', function($scope, $routeParams, SweetAlert, AuthF
         $scope.userWigObj.color = "";
         $scope.userWigObj.capSize = "";
         $scope.userWigObj.notes = "";
-
     };
 
     $scope.addTriedDisliked = function () {
@@ -63,9 +63,9 @@ app.controller('SingleWigCtrl', function($scope, $routeParams, SweetAlert, AuthF
         $scope.userWigObj.color = "";
         $scope.userWigObj.capSize = "";
         $scope.userWigObj.notes = "";
-
     };
 
+//send user's new object to Firebase
     $scope.ownedToFB = function (){
         FirebaseStorage.addUserWig($scope.userWigObj).then(function (comeback){
             SweetAlert.swal("Wig Added!", "You sucessfully added " +  $scope.selectedWig.wigName + " by " + $scope.selectedWig.wigBrand + " to your Owned list", "success");
@@ -90,10 +90,10 @@ app.controller('SingleWigCtrl', function($scope, $routeParams, SweetAlert, AuthF
         });
     };
 
+//materialize stuff. urgh
     $(document).ready(function(){
         $('.modal').modal();
     });
-
 
 
 });
