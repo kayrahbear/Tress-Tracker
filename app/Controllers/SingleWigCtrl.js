@@ -22,11 +22,6 @@ app.controller('SingleWigCtrl', function($scope, $routeParams, SweetAlert, AuthF
             });
         });
 
-    FirebaseStorage.getColors().then(function(allColors){
-        $scope.allColors = allColors;
-        console.log('Complete list of all brand colors: ', $scope.allColors);
-    });
-
 //create new wigobjects from user input
     $scope.addOwnedWig = function () {
         $('select').material_select();
@@ -94,7 +89,6 @@ app.controller('SingleWigCtrl', function($scope, $routeParams, SweetAlert, AuthF
             SweetAlert.swal("Wig Added!", "You sucessfully added " +  $scope.selectedWig.wigName + " by " + $scope.selectedWig.wigBrand + " to your Tried & Dislike list", "success");
         });
     };
-
 
 //materialize stuff. urgh
     $(document).ready(function(){

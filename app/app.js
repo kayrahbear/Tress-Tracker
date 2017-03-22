@@ -12,18 +12,6 @@ app.filter('startFrom', function() {
     };
 });
 
-app.filter('owned', function() {
-  return function(allUserWigs) {
-    var out = [];
-    angular.forEach(allUserWigs, function(wig) {
-      if (wig.owned === true) {
-        out.push(wig);
-      }
-  });
-    return out;
-};
-});
-
 //used to authenticate user when navigating to other views
 let isAuth = (AuthFactory) => new Promise ( (resolve, reject) => {
     AuthFactory.isAuthenticated()
@@ -60,15 +48,23 @@ app.config( function($routeProvider) {
     }).
     when('/search', {
         templateUrl: 'partials/search.html',
-        controller: "SearchCtrl"
+        controller: "SearchCtrl",
+        resolve: {isAuth}
     }).
     when('/search/:wigId', {
         templateUrl: 'partials/singlewig.html',
-        controller: 'SingleWigCtrl'
+        controller: 'SingleWigCtrl',
+        resolve: {isAuth}
     }).
     when('/profile', {
         templateUrl: 'partials/profile.html',
-        controller: "ProfileCtrl"
+        controller: "ProfileCtrl",
+        resolve: {isAuth}
+    }).
+    when('/resources', {
+        templateUrl: 'partials/resources.html',
+        controller: "ResourcesCtrl",
+        resolve: {isAuth}
     }).
     otherwise('/', {});
     });
