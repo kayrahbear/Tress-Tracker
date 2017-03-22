@@ -1,10 +1,12 @@
 "use strict";
 
 app.controller("NavCtrl", function($scope, $window, AuthFactory){
-    $scope.isLoggedIn = false;
 
+//all scoped vars
+    $scope.isLoggedIn = false;
     $scope.user = AuthFactory.getUser();
 
+//set Auth for show/hide functionality on NavBar
     firebase.auth().onAuthStateChanged(function(user){
         if (user) {
             $scope.isLoggedIn = true;
@@ -16,14 +18,14 @@ app.controller("NavCtrl", function($scope, $window, AuthFactory){
         }
     });
 
+//materialize stuff
     $('.dropdown-button').dropdown();
 
     $('.button-collapse').sideNav({
         edge: 'left',
         closeOnClick: true,
         draggable: true
-      }
-    );
+    });
 
     $('.collapsible').collapsible();
 
