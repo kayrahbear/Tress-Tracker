@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row pushDown hide-on-small-only"></div>
+    <div class="row homeRow">
+
+        <!-- card with google & email/pass login and registration -->
+        <div class="col s12 m6">
+            <div class="card-panel z-depth-3 center-align">
+                <a class="btn-large" ng-click="loginGoogle()"><i class="material-icons left">account_circle</i>Google
+                    Log In/Register</a><br><br>
+                <div class="divider"></div>
+                <h4 class="center-align registerHead grey-text text-darken-1">Login/Register with Email</h4>
+                <div class="input-field">
+                    <i class="material-icons prefix grey-text text-darken-1">email</i>
+                    <input type="text" placeholder="Enter Your Email" autofocus="true" ng-model="account.email">
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix grey-text text-darken-1">lock</i>
+                    <input type="password" placeholder="Enter Your Password" ng-model="account.password">
+                </div>
+                <div>
+                    <button class="btn" type="submit" name="action" ng-click="login()">Log In</button>
+
+                    <button class="btn" type="submit" name="action" ng-click="register()">Register</button>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <!-- card with small blurb about app -->
+        <div class="col s12 m6">
+            <div class="card-panel z-depth-3 center-align">
+                <h4 class="welcomeHead grey-text text-darken-1"> Welcome to Tress Tracker </h4>
+                <p> A lightweight application that allows women experiencing hair loss to query a database of 600+
+                    medical grade wigs and partials from companies like Jon Renau, Raquel Welch, and many more. View
+                    each wig's photos, average web price, description, colors, video reviews, and more. </p>
+                <p> Keep track of what wigs you own, wigs you've tried on in-store, and add pieces to your wish list all
+                    within Tress Tracker. Read through helpful resources explaining colors, cap types, and more.</p>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,11 +1,11 @@
 /tressTrackerData
-lib/node_modules
-lib/bower_components
-lib/.sass-cache
-app/values
+public/lib/node_modules
+public/lib/bower_components
+public/lib/.sass-cache
+public/app/values
+/.idea
 .firebaserc
 database.rules.json
 firebase.json
-public
-.idea
+
 

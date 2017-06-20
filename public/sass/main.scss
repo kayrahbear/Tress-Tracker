@@ -1,0 +1,46 @@
+//Button Styles
+.btn-large,
+.btn,
+.btn-flat {
+  background-color: #e91e63;
+}
+
+.btn-large:hover,
+.btn:hover {
+  background-color: #f06292;
+}
+
+.btn-large:focus,
+.btn:focus {
+  background-color: #ad1457;
+}
+
+.clearBtn {
+  margin-top: 1em;
+}
+
+input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #ec407a;
+  box-shadow: 0 1px 0 0 #ec407a;
+}
+
+.nameAndBrand {
+  font-weight: bold;
+}
+
+.card-image img {
+  height: 22em;
+  width: auto;
+}
+
+.card-content {
+  background-color: #CFD8DC;
+}
+
+.deleteButton {
+  background-color: #FAFAFA;
+}
+
+.filterButtons {
+  border: 2px solid #607d8b;
+}
