@@ -6,6 +6,10 @@
 | ------ | ------ |
 
 -----
+### Want to Check out Tress Tracker?
+#### https://tress-tracker.firebaseapp.com/
+
+
 
 ### Problem Addressed
 * After experiencing hair loss, buying a wig (for those who choose too) can be completely overwhelming. Trying on in-store is great, but you’ll often pay up to 25% more than buying online. Having a centralized, unbiased (i.e. not a retailer) tool to search for a wig you find in-store and compare the cost to it’s average web price allows a customer to make a more informed decision.
