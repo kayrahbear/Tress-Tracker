@@ -1,21 +1,29 @@
 <nav class="topNav blue-grey" ng-controller="NavCtrl">
 
-<!-- side navigation for small screens -->
+    <!-- side navigation for small screens -->
     <ul id="slide-out" class="side-nav">
-        <li ng-show="isLoggedIn"><div class="userView">
-            <a href="#!user"><img class="circle" ng-src="images/test.jpg"></a>
-            <a href="#!name"><span class="pink-text name">{{user.currentUserDisplayName}}</span></a>
-            <a href="#!email"><span class="grey-text text-darken-1 email">{{user.currentUserEmail}}</span></a>
-        </div></li>
+        <li ng-show="isLoggedIn">
+            <div class="userView">
+                <a href="#!user"><img class="circle" ng-src="images/test.jpg"></a>
+                <a href="#!name"><span class="pink-text name">{{user.currentUserDisplayName}}</span></a>
+                <a href="#!email"><span class="grey-text text-darken-1 email">{{user.currentUserEmail}}</span></a>
+            </div>
         </li>
-        <li><div class="divider"></div></li>
-        <li ng-show="isLoggedIn"><a class="waves-effect" href="#!/profile"><i class="material-icons pink-text">face</i>My Tress Tracker</a></li>
-        <li ng-show="isLoggedIn"><a class="waves-effect" href="#!/search"><i class="material-icons pink-text">search</i>Browse All Wigs</a></li>
-        <li ng-show="isLoggedIn"><a class="waves-effect" href="#!"><i class="material-icons pink-text">home</i>Log Out</a></li>
-        <li ng-show="!isLoggedIn"><i class="material-icons pink-text">favorite</i><h3 class="grey-text text-darken-1">Please register or log in to get started.</h3></li>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li ng-show="isLoggedIn"><a class="waves-effect" href="#!/profile"><i class="material-icons pink-text">face</i>My
+            Tress Tracker</a></li>
+        <li ng-show="isLoggedIn"><a class="waves-effect" href="#!/search"><i class="material-icons pink-text">search</i>Browse
+            All Wigs</a></li>
+        <li ng-show="isLoggedIn"><a class="waves-effect" href="#!"><i class="material-icons pink-text">home</i>Log
+            Out</a></li>
+        <li ng-show="!isLoggedIn"><i class="material-icons pink-text">favorite</i>
+            <h3 class="grey-text text-darken-1">Please register or log in to get started.</h3></li>
     </ul>
 
-<!-- top navigation for >=med screens -->
+    <!-- top navigation for >=med screens -->
     <a href="#!/profile" class="brand-logo">Tress Tracker</a>
     <ul class="right hide-on-med-and-down">
         <li ng-show="!isLoggedIn"><a href="#!">Log In</a></li>

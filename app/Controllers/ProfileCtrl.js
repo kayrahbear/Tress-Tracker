@@ -1,25 +1,22 @@
 "use strict";
 
-app.controller('ProfileCtrl', function($scope, $routeParams, $filter, $location, AuthFactory, FirebaseStorage) {
+app.controller('ProfileCtrl', function ($scope, $routeParams, $filter, $location, AuthFactory, FirebaseStorage) {
 
 //all scoped vars
     $scope.user = AuthFactory.getUser();
-        console.log("user", $scope.user);
     $scope.allUserWigs = [];
     $scope.currentPage = 0;
     $scope.pageSize = 12;
     $scope.q = '';
 
 //Firebase call for UserWigs and item deletion
-    FirebaseStorage.getUserWigs($scope.user.currentUser).then(function(allUserWigs){
-        console.log('Complete list of users wigs:' , allUserWigs);
+    FirebaseStorage.getUserWigs($scope.user.currentUser).then(function (allUserWigs) {
         $scope.allUserWigs = allUserWigs;
     });
 
     $scope.itemDelete = function (wigId) {
-        console.log('deleting wig ', wigId);
-        FirebaseStorage.deleteUserWig(wigId).then(function(response){
-            FirebaseStorage.getUserWigs($scope.user.currentUser).then(function(allUserWigs){
+        FirebaseStorage.deleteUserWig(wigId).then(function (response) {
+            FirebaseStorage.getUserWigs($scope.user.currentUser).then(function (allUserWigs) {
                 $scope.allUserWigs = allUserWigs;
             });
         });
@@ -49,16 +46,16 @@ app.controller('ProfileCtrl', function($scope, $routeParams, $filter, $location,
         return $filter('filter')($scope.allUserWigs, $scope.q);
     };
 
-    $scope.numberOfPages=function(){
-        return Math.ceil($scope.getData().length/$scope.pageSize);
+    $scope.numberOfPages = function () {
+        return Math.ceil($scope.getData().length / $scope.pageSize);
     };
 
-    for (var i=0; i<65; i++) {
-        $scope.allUserWigs.push("Wig "+i);
+    for (var i = 0; i < 65; i++) {
+        $scope.allUserWigs.push("Wig " + i);
     }
 
 //materialize stuff
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('.modal').modal();
         $('select').material_select();
     });
@@ -66,10 +63,12 @@ app.controller('ProfileCtrl', function($scope, $routeParams, $filter, $location,
 });
 
 //custom filter for pagination on search page
-app.filter('startFrom', function() {
-return function(input, start) {
-if (!input || !input.length) { return; }
-start = +start; //parse to int
-return input.slice(start);
-};
+app.filter('startFrom', function () {
+    return function (input, start) {
+        if (!input || !input.length) {
+            return;
+        }
+        start = +start; //parse to int
+        return input.slice(start);
+    };
 });

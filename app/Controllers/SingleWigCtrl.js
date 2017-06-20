@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('SingleWigCtrl', function($scope, $routeParams, SweetAlert, AuthFactory, FirebaseStorage, $window, $location, $anchorScroll) {
+app.controller('SingleWigCtrl', function ($scope, $routeParams, SweetAlert, AuthFactory, FirebaseStorage, $window, $location, $anchorScroll) {
 
 //all scoped vars
     $scope.user = AuthFactory.getUser();
@@ -9,17 +9,14 @@ app.controller('SingleWigCtrl', function($scope, $routeParams, SweetAlert, AuthF
 
 //Firebase Calls to get data for DOM
     FirebaseStorage.getSingleWig($routeParams.wigId)
-        .then(function successCallback(response){
+        .then(function successCallback(response) {
             $scope.userWigObj = response;
             $scope.selectedWig = response;
-            console.log("selected", $scope.userWigObj.wigUrl);
             FirebaseStorage.scrapeSingleWig($scope.userWigObj.wigUrl)
-            .then(function successCallback(scrapeResponse){
-                $scope.scrapedWig = scrapeResponse;
-                $scope.scrapedColors = $scope.scrapedWig.product.variants;
-                console.log("scraped", $scope.scrapedWig);
-                console.log("colors", $scope.scrapedColors);
-            });
+                .then(function successCallback(scrapeResponse) {
+                    $scope.scrapedWig = scrapeResponse;
+                    $scope.scrapedColors = $scope.scrapedWig.product.variants;
+                });
         });
 
 //create new wigobjects from user input
@@ -66,32 +63,32 @@ app.controller('SingleWigCtrl', function($scope, $routeParams, SweetAlert, AuthF
     };
 
 //send user's new object to Firebase
-    $scope.ownedToFB = function (){
-        FirebaseStorage.addUserWig($scope.userWigObj).then(function (comeback){
-            SweetAlert.swal("Wig Added!", "You sucessfully added " +  $scope.selectedWig.wigName + " by " + $scope.selectedWig.wigBrand + " to your Owned list", "success");
+    $scope.ownedToFB = function () {
+        FirebaseStorage.addUserWig($scope.userWigObj).then(function (comeback) {
+            SweetAlert.swal("Wig Added!", "You sucessfully added " + $scope.selectedWig.wigName + " by " + $scope.selectedWig.wigBrand + " to your Owned list", "success");
         });
     };
 
-    $scope.wishToFB = function (){
-        FirebaseStorage.addUserWig($scope.userWigObj).then(function (comeback){
-            SweetAlert.swal("Wig Added!", "You sucessfully added " +  $scope.selectedWig.wigName + " by " + $scope.selectedWig.wigBrand + " to your Wishlist", "success");
+    $scope.wishToFB = function () {
+        FirebaseStorage.addUserWig($scope.userWigObj).then(function (comeback) {
+            SweetAlert.swal("Wig Added!", "You sucessfully added " + $scope.selectedWig.wigName + " by " + $scope.selectedWig.wigBrand + " to your Wishlist", "success");
         });
     };
 
-    $scope.likeToFB = function (){
-        FirebaseStorage.addUserWig($scope.userWigObj).then(function (comeback){
-            SweetAlert.swal("Wig Added!", "You sucessfully added " +  $scope.selectedWig.wigName + " by " + $scope.selectedWig.wigBrand + " to your Tried & Liked list", "success");
+    $scope.likeToFB = function () {
+        FirebaseStorage.addUserWig($scope.userWigObj).then(function (comeback) {
+            SweetAlert.swal("Wig Added!", "You sucessfully added " + $scope.selectedWig.wigName + " by " + $scope.selectedWig.wigBrand + " to your Tried & Liked list", "success");
         });
     };
 
-    $scope.dislikeToFB = function (){
-        FirebaseStorage.addUserWig($scope.userWigObj).then(function (comeback){
-            SweetAlert.swal("Wig Added!", "You sucessfully added " +  $scope.selectedWig.wigName + " by " + $scope.selectedWig.wigBrand + " to your Tried & Dislike list", "success");
+    $scope.dislikeToFB = function () {
+        FirebaseStorage.addUserWig($scope.userWigObj).then(function (comeback) {
+            SweetAlert.swal("Wig Added!", "You sucessfully added " + $scope.selectedWig.wigName + " by " + $scope.selectedWig.wigBrand + " to your Tried & Dislike list", "success");
         });
     };
 
 //materialize stuff. urgh
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('.modal').modal();
     });
 
