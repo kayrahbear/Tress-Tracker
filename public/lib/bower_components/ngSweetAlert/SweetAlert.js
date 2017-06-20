@@ -10,7 +10,7 @@
 
 	/*global define*/
 	if (typeof define === 'function' && define.amd) {
-		define(['angular', 'sweetalert'], factory);  // AMD
+		define(['angular', '../sweetalert/sweetalert'], factory);  // AMD
 	} else if (typeof module === 'object' && module.exports) {
 		module.exports = factory(require('angular'), require('sweetalert')); // Node
 	} else {
