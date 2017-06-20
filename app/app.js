@@ -2,9 +2,9 @@
 
 var app = angular.module("TressTracker", ["ngRoute", "ngMaterial", "oitozero.ngSweetAlert"]);
 
-app.filter('startFrom', function() {
-    return function(input, start) {
-        if(input) {
+app.filter('startFrom', function () {
+    return function (input, start) {
+        if (input) {
             start = +start;
             return input.slice(start);
         }
@@ -13,61 +13,52 @@ app.filter('startFrom', function() {
 });
 
 //used to authenticate user when navigating to other views
-let isAuth = (AuthFactory) => new Promise ( (resolve, reject) => {
+let isAuth = (AuthFactory) => new Promise((resolve, reject) => {
     AuthFactory.isAuthenticated()
-    .then ( (userExists) => {
-    console.log("userExists", userExists);
-        if (userExists){
-      console.log("You're an authenticated user! Hooray!");
-            resolve();
-        } else {
-      console.log("Who are you? Stranger danger! Shoo!");
-            reject();
-        }
-    });
+        .then((userExists) => {
+            console.log("userExists", userExists);
+            if (userExists) {
+                console.log("You're an authenticated user! Hooray!");
+                resolve();
+            } else {
+                console.log("Who are you? Stranger danger! Shoo!");
+                reject();
+            }
+        });
 });
 
 //set up route paramaters
-app.config( function($routeProvider) {
-   $routeProvider.
-    when('/', {
+app.config(function ($routeProvider) {
+    $routeProvider.when('/', {
         templateUrl: 'partials/home.html',
         controller: "UserCtrl"
-    }).
-    when('/login', {
+    }).when('/login', {
         templateUrl: 'partials/home.html',
         controller: 'UserCtrl'
-    }).
-    when('/logout', {
+    }).when('/logout', {
         templateUrl: 'partials/home.html',
         controller: 'UserCtrl'
-    }).
-    when('/home', {
+    }).when('/home', {
         templateUrl: 'partials/home.html',
         controller: "HomeCtrl"
-    }).
-    when('/search', {
+    }).when('/search', {
         templateUrl: 'partials/search.html',
         controller: "SearchCtrl",
         resolve: {isAuth}
-    }).
-    when('/search/:wigId', {
+    }).when('/search/:wigId', {
         templateUrl: 'partials/singlewig.html',
         controller: 'SingleWigCtrl',
         resolve: {isAuth}
-    }).
-    when('/profile', {
+    }).when('/profile', {
         templateUrl: 'partials/profile.html',
         controller: "ProfileCtrl",
         resolve: {isAuth}
-    }).
-    when('/resources', {
+    }).when('/resources', {
         templateUrl: 'partials/resources.html',
         controller: "ResourcesCtrl",
         resolve: {isAuth}
-    }).
-    otherwise('/', {});
-    });
+    }).otherwise('/', {});
+});
 
 //initialize Firebase
 app.run(($location, FBCreds) => {
@@ -78,5 +69,5 @@ app.run(($location, FBCreds) => {
         databaseURL: creds.databaseURL
     };
 
-firebase.initializeApp(authConfig);
+    firebase.initializeApp(authConfig);
 });
