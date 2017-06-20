@@ -3,3 +3,8 @@ lib/node_modules
 lib/bower_components
 lib/.sass-cache
 app/values
+.firebaserc
+database.rules.json
+firebase.json
+public
+.idea
